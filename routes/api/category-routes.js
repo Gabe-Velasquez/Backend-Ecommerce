@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     const categotyData = await Category.findAll({
       include: {
         model: Product,
-        attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
+        attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
       },
     });
 
@@ -17,7 +17,8 @@ router.get('/', async (req, res) => {
       res.status(404).json({ message: 'No category found' });
       return;
     }
-  } catch (err) {
+    res.status(200).json(categotyData);
+  }catch (err){
     res.status(500).json(err);
   }
 });
@@ -35,6 +36,7 @@ router.get('/:id', async (req, res) => {
       res.status(404).json({ message: 'Category not Found' });
       return;
     }
+    res.status(200).json(categoryData);
   } catch (error) {
     res.status(500).json(error);
   }
@@ -62,7 +64,7 @@ router.put('/:id', async (req, res) => {
       res.status(404).json({message:'no category with that ID'});
       return;
     }
-    res,statys(200).json(categoryData);
+    res.status(200).json(categoryData);
     } catch (err){
       res.status(500).json(err)}
 });
