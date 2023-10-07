@@ -18,7 +18,7 @@ router.get('/', async(req, res) => {
     }
     res.status(200).json(tagData);
     } catch (err) {
-      res.status(500).json(`Error retrieving the tags ${err}`);
+      res.status(500).json(err);
     }
   });
 
